@@ -1,12 +1,20 @@
+from flask import render_template
 from app import app
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return "Hello World"
+    user = {'nickname': 'Mara'} 
+    return render_template('index.html',
+                            title='Home',
+                            user=user)
 
-# Views are handlers that respond to requests from web browsers
-# |--or other clients. 
-# |--Each view function is mapped to one or more request URLs.
 
-#L03 - L04 : 'route' decorators. Create mappings from URLs to this function.
+# Changed the view funtion from hello world to this.
+#L07: Fake user i.e. not a real object. (Not in database)
+#L08: render_template function that invokes Jinja2 templating engine
+#   |-- Jinja 2 substitues {{...}} blocks with the corresponding 
+#   |-- values provided as template arguments
+#   |-- This function takes a template filename and a variable 
+#   |-- list of template and arguments that returns the rendered template
+#   |-- with all the arguments replaced.
