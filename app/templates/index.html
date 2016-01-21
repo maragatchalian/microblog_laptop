@@ -8,11 +8,14 @@
     </head>
     <body>
         <h1>Hello, {{ user.nickname }}!</h1>
+
+        {% for post in posts %}
+        <div><p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p></div>
+        {% endfor %}
+
     </body>
 </html>
 
 <!--
-# This is now a smarter template
-# If the view function forgets to define a page title then instead of 
-# showing an empty title the template will provide its own title.
+# L12-L14: Loops. So that the posts from the view will be displayed.
 -->

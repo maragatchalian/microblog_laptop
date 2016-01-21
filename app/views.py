@@ -5,16 +5,20 @@ from app import app
 @app.route('/index')
 def index():
     user = {'nickname': 'Mara'} 
+    posts = [
+        {
+            'author': {'nickname': 'Eric'},
+            'body': 'Beautiful Day in NYC!'
+        },
+        {
+            'author': {'nickname': 'JJ'},
+            'body': 'I like Tomica cars!'
+        }
+    ]
     return render_template('index.html',
                             title='Home',
-                            user=user)
+                            user=user,
+                            posts=posts)
 
-
-# Changed the view funtion from hello world to this.
-#L07: Fake user i.e. not a real object. (Not in database)
-#L08: render_template function that invokes Jinja2 templating engine
-#   |-- Jinja 2 substitues {{...}} blocks with the corresponding 
-#   |-- values provided as template arguments
-#   |-- This function takes a template filename and a variable 
-#   |-- list of template and arguments that returns the rendered template
-#   |-- with all the arguments replaced.
+# L07: Fake user.
+# L08 - L19 : Fake array of posts.
