@@ -10,6 +10,15 @@
     <body>
         <div>Microblog: <a href="/index">Home</a></div>
         <hr>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }} </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
         {% block content %}{% endblock %}
     </body>
 </html>
@@ -19,4 +28,5 @@
 # from the filename itself, 'base', this means all templates
 # inherited this will have the contents displayed in their specific pages.
 # this is good for navigation bars, login logout page, etc.
+# Will now display flashed messages on base
 -->

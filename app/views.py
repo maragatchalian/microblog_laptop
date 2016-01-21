@@ -24,6 +24,10 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        flash('Login requested for OpenID="%s", remember_me=%s' %
+                (form.openid.data, str(form.remember_me.data)))
+        return redirect('/index')
     return render_template('login.html',
                             title='Sign-in',
                             form=form)
@@ -35,3 +39,9 @@ def login():
 #   |--Without this the view will only accept GET requests.
 #   |--We will want to receive the POST requests, these are the ones that will 
 #   |--bring in the form data entered by the user.
+# L27: validate_on_submit
+#   |-- will gather all the data, run all the validators attached to fields, 
+#   |--and if everything is all right it will return True
+# L28: flash
+#   |-- quick way to show a message regarding the user's action 
+#   |-- We will add these messages to the base template, so that all our templates inherit this functionality. 
