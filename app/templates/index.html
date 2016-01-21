@@ -1,6 +1,10 @@
 <html>
     <head>
+        {% if title %}
         <title>{{ title }} - microblog</title>
+        {% else %}
+        <title>Welcome to microblog</title>
+        {% endif %}
     </head>
     <body>
         <h1>Hello, {{ user.nickname }}!</h1>
@@ -8,6 +12,7 @@
 </html>
 
 <!--
-# Templates keep the logic of our app separate from its layout.
-# Double curly braces are placeholders.
+# This is now a smarter template
+# If the view function forgets to define a page title then instead of 
+# showing an empty title the template will provide its own title.
 -->
