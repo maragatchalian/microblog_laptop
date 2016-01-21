@@ -1,0 +1,22 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - microblog</title>
+        {% else %}
+        <title>Welcome to microblog</title>
+        {% endif %}
+     </head>
+  
+    <body>
+        <div>Microblog: <a href="/index">Home</a></div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>
+
+<!--
+# This is like the 'layout' from dietcake.
+# from the filename itself, 'base', this means all templates
+# inherited this will have the contents displayed in their specific pages.
+# this is good for navigation bars, login logout page, etc.
+-->
